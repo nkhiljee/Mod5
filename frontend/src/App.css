@@ -23,11 +23,84 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
+} */
+
+.intro
+{
+  height: 70vh
+}
+
+.intro-text
+{
+  /* margin-top: 150px; */
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 50px;
+
+
+}
+
+.intro-text h1
+{
+  font-size: 50px;
+  font-family: 'Roboto', sans-serif !important;
+  padding-top: 30px;
+}
+
+.intro-text h3
+{
+  font-size: 24px;
+
+}
+
+.intro-img
+{
+  height: 100%;
+  width: 100%
+}
+
+.intro2
+{
+  height: 60vh;
+  /* background-image: linear-gradient(rgba(255, 255, 255, 1),rgba(255,255,255,0)),url({require('/images/background.png')}); */
+}
+
+
+/*           how it works             */
+
+.works
+{
+  background-color: #c5d0d2;
+
+  height: 400px;
+}
+
+.next
+{
+  background-color: #6b949a;
+  height: 400px;
+}
+
+
+
+
+.footer
+{
+  text-align:center;
+  height:70px;
+  -webkit-box-align:center;
+  -ms-flex-align:center;
+  align-items:center;
+  -webkit-box-pack:justify;
+  -ms-flex-pack:justify;
+  justify-content:space-between;
+  padding:1.5rem 1rem;
+  font-weight: bold
 }

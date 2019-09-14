@@ -1,2 +1,0 @@
-class UserMarketsController < ApplicationController
-end

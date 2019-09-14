@@ -1,2 +1,0 @@
-class InquiriesController < ApplicationController
-end
