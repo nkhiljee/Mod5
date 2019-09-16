@@ -12,8 +12,8 @@ class Api::V1::CalculatorsController < ApplicationController
     end
 
     def create
-        @inquiry = Inquiry.create(:address, :city, :state, :zip, :arv, :rehab, :purchase_price)
-        render json: @inquiry, status: 201
+        @calculator = Calculator.create(:address, :city, :state, :zip, :arv, :rehab, :purchase_price)
+        render json: @calculator, status: 201
     end
 
 end

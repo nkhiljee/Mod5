@@ -25,12 +25,9 @@ class Api::V1::MarketsController < ApplicationController
 
     private
     def market_params
-        params.require(:market).permit(:city, :state, :last_update)
+        params.require(:user_market).permit(:user_id,:market_id,:num_markets)
     end
 
 end
 
 
-t.string :city
-t.string :state
-t.string :last_update

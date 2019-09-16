@@ -30,11 +30,3 @@ class Api::V1::InquiriesController < ApplicationController
 end
 
 
-t.string :name
-t.string :email
-t.string :phone
-t.integer :zipcode
-t.string :organization
-t.string :company_size
-t.boolean :contacted
-t.boolean :resolved
