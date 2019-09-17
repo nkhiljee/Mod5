@@ -32,8 +32,8 @@ export default class Home extends Component {
 
                 <div className="intro2">
                     <div className="col-md-auto">
-                        <i>"Perferred tool by real estate investment firms and brokerages."</i>
-                        <p>- USA Today</p>
+                        <h1><i>"Perferred tool by real estate investment firms and brokerages."</i></h1>
+                        <h3><p>- USA Today</p></h3>
                     </div>
                 </div>
 

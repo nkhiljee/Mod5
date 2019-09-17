@@ -1,3 +1,37 @@
+.float, .float:hover, .float:active, .float:visited, .float:focus
+{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#11a9a5;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+  box-shadow: 2px 2px 3px #999;
+  z-index:10;
+  border-color: #11a9a5 !important;
+  outline: none !important;
+}
+
+.modal
+{
+  z-index:10!important;
+  margin-top: 100px;
+  /* box-shadow: 2px 2px 3px #999 !important; */
+
+}
+
+.fa-plus
+{
+  color: #FFF;
+  transform: translateY(-50%);
+}
+.my-float{
+	margin-top:22px;
+}
+
 .App {
   text-align: center;
 }
@@ -86,7 +120,7 @@ a:hover
 
 .intro2 i
 {
-  font-size: 50px;
+  font-size: 44px;
   font-weight: 500;
 }
 
@@ -94,7 +128,7 @@ a:hover
 {
   padding-top: 40px;
   font-size: 30px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 /*           how it works                      */
@@ -249,7 +283,8 @@ a:hover
   border: 1px solid rgba(0,0,0,0.1)
 }
 
-.statemarket
+.dashboard
 {
-  height: calc(100vh - 150px);
+  min-height: calc(100vh - 150px);
+  height: 100%
 }

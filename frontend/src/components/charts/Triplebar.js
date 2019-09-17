@@ -10,38 +10,38 @@ export default class Triplebar extends Component {
 
     componentDidUpdate(){
    
-    new Chart(document.getElementById("triplebar"), {
-        type: 'bar',
-        data: {
-        labels: [1995,,,,,2000,,,,,2005,,,,,2010,,,,,2015,,,,,2020,],
-        datasets: [
-            {
-            label: "Africa",
-            backgroundColor: "#3e95cd",
-            data: [133,221,783,2478]
-            }, {
-            label: "Europe",
-            backgroundColor: "#8e5ea2",
-            data: [408,547,675,734]
-            }, {
-            label: "Europe",
-            backgroundColor: "#8e5ea2",
-            data: [408,547,675,734]
+        new Chart(document.getElementById("triplebar"), {
+            type: 'bar',
+            data: {
+            labels: ["Jan","feb" ,"Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"],
+            datasets: [
+                {
+                label: new Date().getFullYear() - 2,
+                backgroundColor: "#6b949a",
+                data: this.props.secondlastmonthlyVolume
+                },
+                {
+                label: new Date().getFullYear() - 1,
+                backgroundColor: "#12626c",
+                data: this.props.lastmonthlyVolume
+                }, {
+                label: new Date().getFullYear(),
+                backgroundColor: "#11a9a5",
+                data: this.props.thismonthlyVolume
+                }
+            ]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Year on Year Sales Volume',
+                    fontSize: 20,
+                },
+                legend: {
+                    position: "bottom"
+                },
             }
-        ]
-        },
-        options: {
-        title: {
-            display: true,
-            text: 'Year on Year Growth',
-            fontSize: 20,
-        },
-        legend: {
-            position: "bottom"
-          },
-        }
-    });
-
+        });
     }
 
     render() {
