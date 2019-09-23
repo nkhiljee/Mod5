@@ -1,5 +1,7 @@
 class Api::V1::UsersController < ApplicationController
 
+    skip_before_action :check_authentication, only: [:create]
+
     def index
         @users = User.all
         render json: @users
@@ -10,9 +12,18 @@ class Api::V1::UsersController < ApplicationController
         render json: @user
     end
 
+    #Sign Up
     def create
-        @user = User.create(:name, :email, :password, :city, :state, :phone, :organization, :company_size)
-        render json: @user, status: 201
+        # byebug
+        @user = User.create(user_params)
+        # byebug ##potential issue with password digest
+        if @user.valid?
+            render json: { user: UserSerializer.new(@user) }, status: :created
+            # render json: @user, status: 201
+        else
+            render json: { error: 'failed to create user' }, status: 401
+            # render json: @user, status: 201
+        end
     end
 
     def update
@@ -29,7 +40,7 @@ class Api::V1::UsersController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit(:name, :email, :password, :city, :state, :phone, :organization, :company_size, :is_admin)
+        params.permit(:name, :email, :password, :city, :state, :phone, :organization, :company_size, :account_type, :is_admin)
     end
 
 end

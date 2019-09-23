@@ -3,7 +3,7 @@ import Chart from "chart.js";
 
 
 
-export default class Priceline extends Component {
+export default class Pricesqftline extends Component {
 
     constructor(props){
         super(props)
@@ -14,41 +14,47 @@ export default class Priceline extends Component {
         new Chart(document.getElementById("priceline"), {
             type: 'line',
             data: {
-              labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
+              labels: [1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,],
               datasets: [{ 
-                  data: [86,114,106,106,107,111,133,221,783,2478],
-                  label: "Africa",
-                  borderColor: "#3e95cd",
-                  fill: false
-                }, { 
-                  data: [282,350,411,502,635,809,947,1402,3700,5267],
-                  label: "Asia",
-                  borderColor: "#8e5ea2",
-                  fill: false
-                }, { 
-                  data: [168,170,178,190,203,276,408,547,675,734],
-                  label: "Europe",
+                  data: this.props.price.v100,
+                  label: "$100k",
                   borderColor: "#3cba9f",
                   fill: false
                 }, { 
-                  data: [40,20,10,16,24,38,74,167,508,784],
-                  label: "Latin America",
-                  borderColor: "#e8c3b9",
+                  data: this.props.price.v200,
+                  label: "$200k",
+                  borderColor: "#11a9a5",
                   fill: false
                 }, { 
-                  data: [6,3,2,2,7,26,82,172,312,433],
-                  label: "North America",
-                  borderColor: "#c45850",
+                  data: this.props.price.v300,
+                  label: "$300k",
+                  borderColor: "#c5d0d2",
+                  fill: false
+                }, { 
+                  data: this.props.price.v400,
+                  label: "$400k",
+                  borderColor: "#999999",
+                  fill: false
+                }, { 
+                  data: this.props.price.v500,
+                  label: "$500k",
+                  borderColor: "#6b949a",
+                  fill: false
+                }, { 
+                  data: this.props.price.v600,
+                  label: "$600k",
+                  borderColor: "#12626c",
+                  fill: false
+                }, { 
+                  data: this.props.price.v700,
+                  label: "$700k",
+                  borderColor: "#000000",
                   fill: false
                 }
               ]
             },
             options: {
-              title: {
-                display: true,
-                text: 'Year on Year Price/SQFT',
-                fontSize: 20,
-              },
+
               legend: {
                 position: "bottom"
               },

@@ -32,11 +32,7 @@ export default class Triplebar extends Component {
             ]
             },
             options: {
-                title: {
-                    display: true,
-                    text: 'Year on Year Sales Volume',
-                    fontSize: 20,
-                },
+
                 legend: {
                     position: "bottom"
                 },

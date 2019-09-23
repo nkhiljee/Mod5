@@ -1,8 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
@@ -22,43 +17,43 @@ u2 = User.create(name: "test", email: "test@gmail.com", password: "password", ci
 m1 = Market.create(city: "Houston", state: "TX", last_update: "Aug 27 2019")
 
 um1 = UserMarket.create(user_id: u1.id, market_id: m1.id)
-um1 = UserMarket.create(user_id: u2.id, market_id: m1.id)
+um2 = UserMarket.create(user_id: u2.id, market_id: m1.id)
 
 
-i1 = Inquiry.create(name: "John", email: "john@gmail.com", phone: "7134447054", zipcode: 77079, organization: "ABC", company_size: "10", contacted: false, resolved: false)
+i1 = Inquiry.create(name: "John", email: "john@gmail.com", phone: "7134447054", zipcode: 77079, organization: "ABC", company_size: "10", message: "", contacted: false, resolved: false)
 
 c1 = Calculator.create(address: "123 main st", city: "Houston", state: "TX", zip: 77078, arv: 150000, rehab: 50000, purchase_price:70000)
 
 CSV.foreach(Rails.root.join('lib/property_seed.csv'), headers: true) do |row|
   
     Property.create({
-      Status: row[0],
-      Address: row[1],
-      StreetNumber: row[2],
-      StreetName: row[3],
-      City: row[4],
-      PostalCode: row[5],
-      Lat: row[6],
-      Long: row[7],
-      ListPrice: row[8],
+      # Status: row[0],
+      # Address: row[1],
+      # StreetNumber: row[2],
+      # StreetName: row[3],
+      # City: row[4],
+      # PostalCode: row[5],
+      # Lat: row[6],
+      # Long: row[7],
+      # ListPrice: row[8],
       ClosePrice: row[9],
-      ListDate: row[10],
+      # ListDate: row[10],
       CloseDate: row[11],
-      SqFtTotal: row[12],
-      PriceSqFtList: row[13],
+      # SqFtTotal: row[12],
+      # PriceSqFtList: row[13],
       PriceSqFtSold: row[14],
-      LotSize: row[15],
-      YearBuilt: row[16],
-      BedsTotal: row[17],
-      BathsTotal: row[18],
-      Stories: row[19],
-      NewConstruction: row[20],
-      Style: row[21],
+      # LotSize: row[15],
+      # YearBuilt: row[16],
+      # BedsTotal: row[17],
+      # BathsTotal: row[18],
+      # Stories: row[19],
+      # NewConstruction: row[20],
+      # Style: row[21],
       DOM: row[22],
       CDOM: row[23],
       SoldTerms: row[24],
-      HOAMandatory: row[25],
-      TaxAmount: row[26],
+      # HOAMandatory: row[25],
+      # TaxAmount: row[26],
       market_id: m1.id
     })
   end

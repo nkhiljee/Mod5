@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom'
 
 
 export default class Pricing extends Component {
+    constructor(props){
+        super(props)
+    }
+
     render() {
         return(
             <div className="pricing">
@@ -20,7 +24,7 @@ export default class Pricing extends Component {
                             <div className="card-body">
                                 <h5 className="card-title"><strong>Monthly Subscription</strong></h5>
                                 <p className="card-text" id="pricing-price">$49</p>
-                                <Link to="/cart"><button type="button" class="btn btn-success">Add to Cart</button></Link>
+                                <Link to="/cart" ><button type="button" value= "monthly" class="btn btn-success" onClick={(e) => this.props.addToCart(e)}>Add to Cart</button></Link>
                             </div>
                         </div>
                     </div>
@@ -30,7 +34,7 @@ export default class Pricing extends Component {
                             <div className="card-body">
                                 <h5 className="card-title"><strong>Yearly Subscription</strong></h5>
                                 <p className="card-text" id="pricing-price">$499</p>
-                                <Link to="/cart"><button type="button" class="btn btn-success">Add to Cart</button></Link>
+                                <Link to="/cart" ><button type="button" value="yearly" className="btn btn-success" onClick={(e) => this.props.addToCart(e)}>Add to Cart</button></Link>
                             </div>
                         </div>
                     </div>

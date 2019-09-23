@@ -15,10 +15,16 @@
   outline: none !important;
 }
 
+.close
+{
+  outline: none !important;
+
+}
+
 .modal
 {
   z-index:10!important;
-  margin-top: 100px;
+  margin-top: 62px;
   /* box-shadow: 2px 2px 3px #999 !important; */
 
 }
@@ -286,5 +292,7 @@ a:hover
 .dashboard
 {
   min-height: calc(100vh - 150px);
-  height: 100%
+  /* height: 100%; */
+  justify-content: center;
+
 }

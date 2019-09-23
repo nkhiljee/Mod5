@@ -22,11 +22,6 @@ export default class StateMarket extends Component {
               ]
             },
             options: {
-              title: {
-                display: true,
-                text: 'Yearly Sales Volume',
-                fontSize: 20,
-              },
               legend: {
                 position: "bottom"
               },

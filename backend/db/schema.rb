@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_09_13_160115) do
     t.integer "zipcode"
     t.string "organization"
     t.string "company_size"
+    t.string "message"
     t.boolean "contacted"
     t.boolean "resolved"
     t.datetime "created_at", null: false
@@ -92,14 +93,14 @@ ActiveRecord::Schema.define(version: 2019_09_13_160115) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.string "password"
     t.string "password_digest"
     t.string "city"
     t.string "state"
     t.string "phone"
     t.string "organization"
     t.string "company_size"
-    t.boolean "is_admin"
+    t.string "account_type"
+    t.boolean "is_admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

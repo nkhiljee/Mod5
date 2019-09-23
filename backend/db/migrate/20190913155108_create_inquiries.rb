@@ -8,6 +8,7 @@ class CreateInquiries < ActiveRecord::Migration[5.2]
       t.integer :zipcode
       t.string :organization
       t.string :company_size
+      t.string :message
       t.boolean :contacted
       t.boolean :resolved
       t.timestamps

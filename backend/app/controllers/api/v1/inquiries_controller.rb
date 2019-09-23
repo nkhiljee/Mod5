@@ -11,7 +11,7 @@ class Api::V1::InquiriesController < ApplicationController
     end
 
     def create
-        @inquiry = Inquiry.create(:name, :email, :phone, :zipcode, :organization, :company_size)
+        @inquiry = Inquiry.create(inquiry_params)
         render json: @inquiry, status: 201
     end
 

@@ -8,6 +8,7 @@ import Footer from './components/Footer'
 import Pricing from './components/Pricing'
 import Cart from './components/Cart'
 import Dashboard from './components/Dashboard'
+import Cartinfo from './components/Cartinfo'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
 export default class App extends React.Component {
@@ -15,10 +16,24 @@ export default class App extends React.Component {
   constructor(){
     super()
     this.state={
-      clicked: false
+      clicked: false,
+      cart: "empty",
+      loggedIn: false
     }
   }
 
+  login = () => {
+    this.setState({
+      loggedIn: !this.state.loggedIn
+    })
+  }
+
+  addToCart = (e) => {
+    console.log(e.target.value)
+    this.setState({
+        cart: e.target.value
+    })
+}
 
   inquiry = () => {
     this.setState ({
@@ -37,11 +52,12 @@ export default class App extends React.Component {
             <Navbar/>
             
             <Switch>
+              <Route path="/cartinfo" render = {(routerProps) => <Cartinfo {...routerProps}/> }/>
               <Route path="/dashboard" render = {(routerProps) => <Dashboard {...routerProps} /> } />
-              <Route path="/cart" render = {(routerProps) => <Cart {...routerProps} /> } />
-              <Route path="/pricing" render = {(routerProps) => <Pricing {...routerProps} /> } />
+              <Route path="/cart" render = {(routerProps) => <Cart cart={this.state.cart} {...routerProps} /> } />
+              <Route path="/pricing" render = {(routerProps) => <Pricing addToCart={this.addToCart} {...routerProps} /> } />
               <Route path="/signup" render = {(routerProps) => <Signup {...routerProps} /> } />
-              <Route path="/login" render = {(routerProps) => <Login {...routerProps} /> } />
+              <Route path="/login" render = {(routerProps) => <Login {...routerProps} loggedIn={this.login}/> } />
               <Route path="/" render = {() => <Home /> } />
             </Switch>
             <Footer />
@@ -70,23 +86,26 @@ export default class App extends React.Component {
                     </div>
                     <div className="form-group">
                         <label for="exampleInputEmail1">Phone</label>
-                        <input type="email" className="form-control" name="phone" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter phone number" onChange={this.handleChange}/>
+                        <input type="phone" className="form-control" name="phone" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter phone number" onChange={this.handleChange}/>
                     </div>
                     <div className="form-group">
                         <label for="exampleInputEmail1">Organization</label>
-                        <input type="email" className="form-control" name="organization" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter organization name" onChange={this.handleChange}/>
+                        <input type="org" className="form-control" name="organization" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter organization name" onChange={this.handleChange}/>
+                    </div>
+                    <div className="form-group">
+                        <label for="exampleInputEmail1">Question</label>
+                        <input type="question" className="form-control" name="question" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter question" onChange={this.handleChange}/>
+                    </div>
+                    <div className="modal-footer">
+                    <button type="button" className="btn btn-success">Submit</button>
                     </div>
                   </form>
-
-                  </div>
-                  <div className="modal-footer">
-                    <button type="button" className="btn btn-success">Save changes</button>
                   </div>
                 </div>
               </div>
             </div>
             :
-            <div>Nah</div>}
+            <div></div>}
             </BrowserRouter>
     );
   }

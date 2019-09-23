@@ -1,7 +1,43 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom'
 
 
 export default class Signup extends Component {
+
+    signup = (e) => {
+        e.preventDefault()
+        console.log(e.target[0].value)
+        console.log(e.target[1].value)
+        console.log(e.target[2].value)
+        console.log(e.target[3].value)
+        console.log(e.target[4].value)
+        console.log(e.target[5].value)
+        console.log(e.target[6].value)
+        fetch("http://localhost:3000/api/v1/users", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: e.target[0].value,
+                email: e.target[1].value,
+                password: e.target[2].value,
+                city: e.target[3].value,
+                state: e.target[4].value,
+                phone: "",
+                organization: e.target[5].value,
+                company_size: e.target[6].value,
+                account_type: "null",
+                is_admin: false
+            })
+        })
+        .then(res => res.json())
+        .then(data =>{
+            this.props.history.push("/login")
+        })
+
+    }
+
     render() {
         return(
             <div className="signin">
@@ -14,7 +50,7 @@ export default class Signup extends Component {
                     <div className="col-sm">
                     </div>
                     <div className="col-sm">
-                        <form onSubmit={null}>
+                        <form onSubmit={(e) => this.signup(e)}>
 
                             <div className="form-group">
                                 <label for="exampleInputEmail1">Full Name</label>
