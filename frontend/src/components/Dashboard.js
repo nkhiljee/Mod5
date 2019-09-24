@@ -17,6 +17,7 @@ export default class Dashboard extends Component {
         super()
         this.state={
             properties: [],
+            market: ""
         }
     }
 
@@ -35,6 +36,22 @@ export default class Dashboard extends Component {
                 properties: properties
             })
         })
+        fetch("http://localhost:3000/api/v1/markets", {
+            method: "GET",
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${localStorage.token}` 
+            }
+        })
+        .then(res=>res.json())
+        .then(market => {
+            
+            this.setState({
+                market: market
+            })
+        })
+
     }
 
     range = () => {
@@ -373,10 +390,32 @@ export default class Dashboard extends Component {
 
     render() {
         this.thismonthlyDOM()
+        console.log(this.state.market.city)
         return(
             <div>
             {localStorage.account != "null" || localStorage.admin == "true" ?
             <div className="dashboard" style={{ 'marginLeft': '15px', 'marginRight': '15px'}}>
+                <div className="row">
+                    <div className="col" style={{ 'marginTop': '15px', 'marginBottom': '15px'}}>
+                        <div className="card bg-secondary mb-3" style={{"width": "100%", height: "100%"}}>
+                            <div className="card-header"><h3>Market Info</h3></div>
+                            <div className="card-body">
+                                */ Market Info /*
+                                <div className="row">
+                                    <div className="col">
+                                        <h1>{`Market Name: ${this.state.market.city}, ${this.state.market.state}`}</h1>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col">
+                                    </div>
+                                    <div className="col">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div className="row">
                     <div className="col" style={{ 'marginTop': '15px', 'marginBottom': '15px'}}>
                         <div className="card bg-secondary mb-3" style={{"width": "100%", height: "100%"}}>
