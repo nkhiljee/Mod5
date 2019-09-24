@@ -31,8 +31,6 @@ export default class Dashboard extends Component {
         })
         .then(res=>res.json())
         .then(properties => {
-            console.log(properties)
-            console.log(localStorage.token)
             this.setState({
                 properties: properties
             })
@@ -378,9 +376,7 @@ export default class Dashboard extends Component {
         return(
             <div>
             {localStorage.account != "null" || localStorage.admin == "true" ?
-            /* {localStorage.account != "null"  ? */
-
-            <div className="dashboard">
+            <div className="dashboard" style={{ 'marginLeft': '15px', 'marginRight': '15px'}}>
                 <div className="row">
                     <div className="col" style={{ 'marginTop': '15px', 'marginBottom': '15px'}}>
                         <div className="card bg-secondary mb-3" style={{"width": "100%", height: "100%"}}>

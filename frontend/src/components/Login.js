@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 
 export default class Login extends Component {
+    
 
     login = (e) => {
         e.preventDefault()
@@ -28,7 +29,8 @@ export default class Login extends Component {
             localStorage.account = data.account
 
             this.props.history.push("/dashboard")
-            this.props.loggedIn()
+            this.props.loggedIn(data.id)
+
         })
     }
 

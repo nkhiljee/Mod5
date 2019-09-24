@@ -11,7 +11,7 @@ Property.destroy_all
 Inquiry.destroy_all
 Calculator.destroy_all
 
-u1 = User.create(name: "Naush Khiljee", email: "nausherwan.khiljee@gmail.com", password: "password", city: "Houston", state: "TX", phone: "8327900301", organization: "RE Analyzer", company_size: "1", is_admin: true)
+u1 = User.create(name: "Naush Khiljee", email: "nausherwan.khiljee@gmail.com", password: "password", city: "Houston", state: "TX", phone: "8327900301", organization: "RE Analyzer", company_size: "1", account_type: "admin", is_admin: true)
 u2 = User.create(name: "test", email: "test@gmail.com", password: "password", city: "Houston", state: "TX", phone: "0000000000", organization: "unknown", company_size: "1", is_admin: false)
 
 m1 = Market.create(city: "Houston", state: "TX", last_update: "Aug 27 2019")
