@@ -15,6 +15,7 @@ class ApplicationController < ActionController::API
             # byebug
             user_id = decoded_token["user_id"]
             User.find(user_id)
+            # byebug
         end
     end
 

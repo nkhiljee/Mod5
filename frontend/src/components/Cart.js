@@ -65,9 +65,6 @@ export default class Inquiry extends Component {
                             }
                         </div>
                         </div>
-
-
-
                     </div>
                     <div className="col">
                     </div>
@@ -75,8 +72,8 @@ export default class Inquiry extends Component {
             </div>
             :
             <div className="dashboard">
-                <div className="col" style={{ 'textAlign': "center", 'marginTop': '70px', 'marginBottom': '30px'}}>
-                    <h1>Please Sign Up and Login To Complete Your Order</h1>
+                <div className="col" style={{ 'textAlign': "center", 'marginTop': '30px', 'marginBottom': '30px'}}>
+                    <h1>Please Sign Up or Login To Complete Your Order</h1>
                     <br />
                     <br />
 

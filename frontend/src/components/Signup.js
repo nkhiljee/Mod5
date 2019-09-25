@@ -42,9 +42,9 @@ export default class Signup extends Component {
         return(
             <div className="signin">
                 <div className="row">
-                <div className="col-sm">
-                <h1>What will your market teach you?</h1>
-                </div>
+                    <div className="col-sm">
+                        <h1>What will your market teach you?</h1>
+                    </div>
                 </div>
                 <div className="row">
                     <div className="col-sm">
@@ -53,25 +53,25 @@ export default class Signup extends Component {
                         <form onSubmit={(e) => this.signup(e)}>
 
                             <div className="form-group">
-                                <label for="exampleInputEmail1">Full Name</label>
-                                <input type="fullname" className="form-control" name="fullname" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter full name" onChange={this.handleChange}/>
+                                <label>Full Name</label>
+                                <input type="fullname" className="form-control" name="fullname" aria-describedby="emailHelp" placeholder="Enter full name" required/>
                             </div>
                             <div className="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" className="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" onChange={this.handleChange}/>
+                                <label>Email address</label>
+                                <input type="email" className="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email" required/>
                             </div>
                             <div className="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" className="form-control" name="password" id="exampleInputPassword1" placeholder="Password" onChange={this.handleChange}/>
+                                <label>Password</label>
+                                <input type="password" className="form-control" name="password" placeholder="Password" required/>
                             </div>
                     
                             <div className="form-group">
-                                <label for="exampleInputPassword1">City</label>
-                                <input type="city" className="form-control" name="city" id="exampleInputPassword1" placeholder="City" onChange={this.handleChange}/>
+                                <label>City</label>
+                                <input type="city" className="form-control" name="city" placeholder="City" required/>
                             </div>
                             <div className="form-group">
-                                <label for="exampleSelect1">State</label>
-                                <select className="form-control" id="exampleSelect1">
+                                <label>State</label>
+                                <select className="form-control" required>
                                     <option className="form-control" value="AL">Alabama</option>
                                     <option className="form-control" value="AK">Alaska</option>
                                     <option className="form-control" value="AZ">Arizona</option>
@@ -126,12 +126,12 @@ export default class Signup extends Component {
                                 </select>
                             </div>
                             <div className="form-group">
-                                <label for="exampleInputPassword1">Organization</label>
-                                <input type="organization" className="form-control" name="organization" id="exampleInputPassword1" placeholder="Organization" onChange={this.handleChange}/>
+                                <label>Organization</label>
+                                <input type="organization" className="form-control" name="organization" placeholder="Organization" required/>
                             </div>
                             <div className="form-group">
-                                <label for="exampleSelect1">Company Size</label>
-                                <select className="form-control" id="exampleSelect1">
+                                <label>Company Size</label>
+                                <select className="form-control" required>
                                     <option className="form-control" value="1-10">1-10</option>
                                     <option className="form-control" value="11-50">11-50</option>
                                     <option className="form-control" value="51-100">51-100</option>

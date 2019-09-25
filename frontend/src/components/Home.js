@@ -23,8 +23,8 @@ export default class Home extends Component {
                         <div className="col">
                         <br/>
                         <br/>
-                            <Link to="/pricing"><button type="button" class="btn btn-success">Get Started</button></Link>
-                            <a href="#features"><button type="button" class="btn btn-success">Learn More</button></a>
+                            <Link to="/pricing"><button type="button" className="btn btn-success">Get Started</button></Link>
+                            <a href="#features"><button type="button" className="btn btn-success">Learn More</button></a>
                         </div>
 
                     </div>
@@ -40,7 +40,7 @@ export default class Home extends Component {
 
 
                 <div className="works">
-                <a name="features" class="anchor"></a>
+                <a name="features" className="anchor"></a>
                     <div className="row justify-content-md-center">
                         <div className="col">
                             <h1>Make data driven decisions</h1>
@@ -81,7 +81,7 @@ export default class Home extends Component {
                             <br/>
                             <br/>
 
-                            <Link to="/pricing"><button type="button" class="btn btn-success">Get Started</button></Link>
+                            <Link to="/pricing"><button type="button" className="btn btn-success">Get Started</button></Link>
                             <br/>
                             <br/>
                             <br/>
@@ -121,7 +121,7 @@ export default class Home extends Component {
 
                         </div>
                     </div>
-                    <Link to="/pricing"><button type="button" class="btn btn-success">Get Started</button></Link>
+                    <Link to="/pricing"><button type="button" className="btn btn-success">Get Started</button></Link>
 
                 </div>
                 <div className="prefooter">

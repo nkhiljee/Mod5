@@ -61,12 +61,35 @@ export default class App extends React.Component {
     })
   }
 
-
-
   inquiry = () => {
     this.setState ({
       clicked: !this.state.clicked
     })
+  }
+
+  submitInquiry = (e) => {
+    e.preventDefault()
+    fetch("http://localhost:3000/api/v1/inquiries", {
+      method: "POST",
+      mode: 'cors',
+      headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.token}` 
+      },
+      body: JSON.stringify({
+          name: e.target[0].value,
+          email: e.target[1].value,
+          phone: e.target[2].value,
+          organization: e.target[3].value,
+          message: e.target[4].value
+      })
+  })
+  .then(res=>res.json())
+  .then(data => {
+    this.setState({
+      clicked: !this.state.clicked
+    })
+  })
   }
 
   render () {
@@ -114,29 +137,29 @@ export default class App extends React.Component {
                   </div>
                   <div className="modal-body">
 
-                  <form>
+                  <form onSubmit={(e) => this.submitInquiry(e)}>
                     <div className="form-group">
-                        <label for="exampleInputEmail1">Full Name</label>
-                        <input type="fullname" className="form-control" name="fullname" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter full name" onChange={this.handleChange}/>
+                        <label>Full Name</label>
+                        <input type="text" className="form-control" aria-describedby="emailHelp" placeholder="Enter Full Name" required/>
                     </div>
                     <div className="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" className="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" onChange={this.handleChange}/>
+                        <label>Email address</label>
+                        <input type="email" className="form-control" aria-describedby="emailHelp" placeholder="Enter Email" required/>
                     </div>
                     <div className="form-group">
-                        <label for="exampleInputEmail1">Phone</label>
-                        <input type="phone" className="form-control" name="phone" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter phone number" onChange={this.handleChange}/>
+                        <label>Phone</label>
+                        <input type="text" className="form-control" aria-describedby="emailHelp" placeholder="Enter Phone Number" required/>
                     </div>
                     <div className="form-group">
-                        <label for="exampleInputEmail1">Organization</label>
-                        <input type="org" className="form-control" name="organization" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter organization name" onChange={this.handleChange}/>
+                        <label>Organization</label>
+                        <input type="text" className="form-control" aria-describedby="emailHelp" placeholder="Enter Organization Name" required/>
                     </div>
                     <div className="form-group">
-                        <label for="exampleInputEmail1">Question</label>
-                        <input type="question" className="form-control" name="question" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter question" onChange={this.handleChange}/>
+                        <label>Question</label>
+                        <input type="text" className="form-control" aria-describedby="emailHelp" placeholder="Enter Question" required/>
                     </div>
                     <div className="modal-footer">
-                    <button type="button" className="btn btn-success">Submit</button>
+                    <button type="submit" className="btn btn-success">Submit</button>
                     </div>
                   </form>
                   </div>

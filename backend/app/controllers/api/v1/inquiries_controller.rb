@@ -1,5 +1,7 @@
 class Api::V1::InquiriesController < ApplicationController
 
+    skip_before_action :check_authentication, only: [:create]
+
     def index
         @inquiries = Inquiry.all
         render json: @inquiries
@@ -25,7 +27,7 @@ class Api::V1::InquiriesController < ApplicationController
 
     private
     def inquiry_params
-        params.require(:inquiry).permit(:name, :email, :phone, :zipcode, :organization, :company_size, :contacted, :resolved)
+        params.require(:inquiry).permit(:name, :email, :phone, :zipcode, :organization, :message, :company_size, :contacted, :resolved)
     end
 end
 

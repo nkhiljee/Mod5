@@ -12,9 +12,12 @@ class Api::V1::CalculatorsController < ApplicationController
     end
 
     def create
-        @calculator = Calculator.create(:address, :city, :state, :zip, :arv, :rehab, :purchase_price)
+        @calculator = Calculator.create(calculator_params)
         render json: @calculator, status: 201
     end
-
+    private
+    def calculator_params
+        params.require(:calculator).permit(:address, :city, :state, :zip, :arv, :rehab, :purchase_price)
+    end
 end
 

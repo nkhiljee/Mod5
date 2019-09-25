@@ -8,9 +8,6 @@ import Cdom from './charts/Cdom'
 import { Link } from 'react-router-dom'
 
 
-
-
-
 export default class Dashboard extends Component {
 
     constructor(){
@@ -45,13 +42,12 @@ export default class Dashboard extends Component {
             }
         })
         .then(res=>res.json())
-        .then(market => {
-            
+        .then(markets => markets.map(market => {
             this.setState({
                 market: market
             })
         })
-
+        )
     }
 
     range = () => {
@@ -114,6 +110,34 @@ export default class Dashboard extends Component {
             return secondlastmonthlyvol.push(secondlastmontharr.length)
         })
         return secondlastmonthlyvol
+    }
+    thismonthlydollarvolume = () => {
+        let monthrange = this.monthrange()
+        let thisyear = new Date().getFullYear()
+        let thismonthlyvol = []
+        let thismontharr
+        let sum = 0
+        let avg = 0
+        let arr = []
+
+        monthrange.forEach(month => {
+            sum = 0
+            avg = 0
+            // debugger
+            thismontharr = this.state.properties.filter(property => property.CloseDate.split("-")[0] == thisyear && property.CloseDate.split("-")[1] == month)
+            arr = thismontharr.map(property => {
+                return property.ClosePrice
+            })
+            if (arr.length != 0) {
+                sum = arr.reduce((accumulator, currentValue) => accumulator + currentValue)
+                // avg = sum / arr.length
+                thismonthlyvol.push(parseInt(sum))
+
+                return thismonthlyvol
+            }
+            thismonthlyvol.push(parseInt(sum))
+        })
+        return thismonthlyvol
     }
 
     thismonthlyDOM = () => {
@@ -370,27 +394,10 @@ export default class Dashboard extends Component {
 
 
 
-    // pricesqft = () => {
-    //     let pricerange = [50,100,150,200,250,300,400]
-    //     let arr
-    //     let vol = []
-        
-    //     for(let i = 0; i < pricerange.length; i++) {
-    //         pricerange[i] === 50 ? 
-    //             arr = this.state.properties.filter(property => property.PriceSqFtSold <= pricerange[i])
-    //         :
-    //             arr = this.state.properties.filter(property => property.PriceSqFtSold <= pricerange[i] && property.PriceSqFtSold > pricerange[i-1])
-
-    //         vol.push(arr.length)
-    //     }
-    //     return vol
-    // }
-
-
-
     render() {
         this.thismonthlyDOM()
-        console.log(this.state.market.city)
+        // console.log(this.actualMonths())
+        // console.log()
         return(
             <div>
             {localStorage.account != "null" || localStorage.admin == "true" ?
@@ -400,16 +407,45 @@ export default class Dashboard extends Component {
                         <div className="card bg-secondary mb-3" style={{"width": "100%", height: "100%"}}>
                             <div className="card-header"><h3>Market Info</h3></div>
                             <div className="card-body">
-                                */ Market Info /*
                                 <div className="row">
                                     <div className="col">
                                         <h1>{`Market Name: ${this.state.market.city}, ${this.state.market.state}`}</h1>
                                     </div>
                                 </div>
-                                <div className="row">
+                                <div className="row" style={{paddingLeft: "100px", paddingRight: "100px"}}>
                                     <div className="col">
+                                        <h3 style={{paddingTop: "20px"}}>Last Month's Stats</h3>
+                                        <div className="row" style={{paddingLeft: "100px", paddingTop: "20px"}}>
+                                            <div className="col">
+                                                <p style={{"textAlign": "right",fontWeight: "500"}}>Total Property Sales:</p>
+                                                <p style={{"textAlign": "right",fontWeight: "500"}}>Total Dollar Volume:</p>
+                                                <p style={{"textAlign": "right",fontWeight: "500"}}>Total Days on Market:</p>
+                                                <p style={{"textAlign": "right",fontWeight: "500"}}>Total Cumulative DOM:</p>
+                                            </div>
+                                            <div className="col">
+                                                <p style={{"textAlign": "left"}}>{this.thismonthlyVolume()[new Date().getMonth() - 1]}</p>
+                                                <p style={{"textAlign": "left"}}>${this.thismonthlydollarvolume()[new Date().getMonth() - 1]}</p>
+                                                <p style={{"textAlign": "left"}}>{this.thismonthlyDOM()[new Date().getMonth() - 1]}</p>
+                                                <p style={{"textAlign": "left"}}>{this.thismonthlyCDOM()[new Date().getMonth() - 1]}</p>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div className="col">
+                                        <h3 style={{paddingTop: "20px"}}>This Year's Stats</h3>
+                                        <div className="row"  style={{paddingLeft: "100px", paddingTop: "20px"}}>
+                                            <div className="col">
+                                                <p style={{"textAlign": "right",fontWeight: "500"}}>Total Property Sales:</p>
+                                                <p style={{"textAlign": "right",fontWeight: "500"}}>Total Dollar Volume:</p>
+                                                <p style={{"textAlign": "right",fontWeight: "500"}}>Average Days on Market:</p>
+                                                <p style={{"textAlign": "right",fontWeight: "500"}}>Average Cumulative DOM:</p>
+                                            </div>
+                                            <div className="col">
+                                                <p style={{"textAlign": "left"}}>{this.salesVolume()[this.salesVolume().length - 2]}</p>
+                                                <p style={{"textAlign": "left"}}>${this.thismonthlydollarvolume().reduce((accumulator, currentValue) => accumulator + currentValue)}</p>
+                                                <p style={{"textAlign": "left"}}>{this.thismonthlyDOM().reduce((accumulator, currentValue) => accumulator + currentValue) / this.thismonthlyDOM().filter(month => month != 0).length}</p>
+                                                <p style={{"textAlign": "left"}}>{this.thismonthlyCDOM().reduce((accumulator, currentValue) => accumulator + currentValue) / this.thismonthlyCDOM().filter(month => month != 0).length}</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -426,11 +462,11 @@ export default class Dashboard extends Component {
                         </div>
                     </div>
                     <div className="col" style={{ 'marginTop': '15px', 'marginBottom': '15px'}}>
-                    <div className="card bg-secondary mb-3" style={{"width": "100%", height: "100%"}}>
-                        <div className="card-header"><h3>Year on Year Sales Volume</h3></div>
-                        <div className="card-body">
-                            <Triplebar thismonthlyVolume={this.thismonthlyVolume()} lastmonthlyVolume={this.lastmonthlyVolume()} secondlastmonthlyVolume={this.secondlastmonthlyVolume()}/>
-                        </div>
+                        <div className="card bg-secondary mb-3" style={{"width": "100%", height: "100%"}}>
+                            <div className="card-header"><h3>Year on Year Sales Volume</h3></div>
+                            <div className="card-body">
+                                <Triplebar thismonthlyVolume={this.thismonthlyVolume()} lastmonthlyVolume={this.lastmonthlyVolume()} secondlastmonthlyVolume={this.secondlastmonthlyVolume()}/>
+                            </div>
                         </div>
                         
                     </div>
