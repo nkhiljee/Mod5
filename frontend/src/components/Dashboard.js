@@ -32,7 +32,9 @@ export default class Dashboard extends Component {
             this.setState({
                 properties: properties
             })
+            this.props.propertyCount(this.state.properties.length)
         })
+
         fetch("http://localhost:3000/api/v1/markets", {
             method: "GET",
             mode: 'cors',
@@ -42,11 +44,16 @@ export default class Dashboard extends Component {
             }
         })
         .then(res=>res.json())
-        .then(markets => markets.map(market => {
+        .then(markets => {
             this.setState({
-                market: market
+                markets: markets
             })
-        })
+            markets.map(market => {
+                this.setState({
+                    market: market
+                })
+            })
+        }
         )
     }
 
@@ -397,7 +404,6 @@ export default class Dashboard extends Component {
     render() {
         this.thismonthlyDOM()
         // console.log(this.actualMonths())
-        // console.log()
         return(
             <div>
             {localStorage.account != "null" || localStorage.admin == "true" ?

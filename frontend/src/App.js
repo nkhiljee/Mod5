@@ -21,8 +21,15 @@ export default class App extends React.Component {
       clicked: false,
       cart: "empty",
       loggedIn: false,
-      toDashboard: false
+      toDashboard: false,
+      propertyCount: 0
     }
+  }
+
+  propertyCount = (count) => {
+    this.setState({
+      propertyCount: count
+    })
   }
 
   login = (e) => {
@@ -112,10 +119,10 @@ export default class App extends React.Component {
             <Navbar/>
             
             <Switch>
-              <Route path="/admin_dashboard" render = {(routerProps) => <Admindash {...routerProps} /> }/>
+              <Route path="/admin_dashboard" render = {(routerProps) => <Admindash {...routerProps} propertyCount={this.state.propertyCount}/> }/>
               <Route path="/calculator" render = {(routerProps) => <Calculator {...routerProps} /> }/>
               <Route path="/cartinfo" render = {(routerProps) => <Cartinfo {...routerProps} updateAccount={this.updateAccount}/> }/>
-              <Route path="/dashboard" render = {(routerProps) => <Dashboard {...routerProps} /> } />
+              <Route path="/dashboard" render = {(routerProps) => <Dashboard {...routerProps} propertyCount={(count) => this.propertyCount(count)} /> } />
               <Route path="/cart" render = {(routerProps) => <Cart cart={this.state.cart} {...routerProps} /> } />
               <Route path="/pricing" render = {(routerProps) => <Pricing addToCart={this.addToCart} {...routerProps} /> } />
               <Route path="/signup" render = {(routerProps) => <Signup {...routerProps} /> } />
