@@ -2,9 +2,7 @@ import React, {Component} from 'react';
 import Inquirymap from './Inquirymap'
 import Usermap from './Usermap'
 import Marketmap from './Marketmap'
-
-
-
+import Calculatormap from './Calculatormap'
 
 export default class AdminDash extends Component {
     constructor(){
@@ -29,6 +27,15 @@ export default class AdminDash extends Component {
                 city: "",
                 state: "",
                 last_update: ""
+            },
+            calculator: {
+                address: "",
+                city: "",
+                state: "",
+                zip: "",
+                arv: "",
+                rehab: "",
+                purchase_price: ""
             }
         }
     }
@@ -78,6 +85,21 @@ export default class AdminDash extends Component {
                 markets: markets
             })
         })
+
+        fetch("http://localhost:3000/api/v1/calculators", {
+            method: "GET",
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${localStorage.token}` 
+            }
+        })
+        .then(res => res.json())
+        .then(calculators => {
+            this.setState({
+                calculators: calculators
+            })
+        })
     }
 
     displayInquiry = (inquiry) => {
@@ -93,9 +115,14 @@ export default class AdminDash extends Component {
     }
 
     displayMarket = (market) => {
-        // console.log(market)
         this.setState({
             market: market
+        })
+    }
+
+    displayCalculator = (calculator) => {
+        this.setState({
+            calculator: calculator
         })
     }
 
@@ -185,11 +212,9 @@ export default class AdminDash extends Component {
         })
         .then(res => res.json())
         .then(user => {
-            // console.log(user)
             let arr = this.state.users.map(u => {
                 if (u.id === this.state.user.id) {
                     u = user
-                    // console.log(user)
                     this.setState({
                         user: {
                             name: "",
@@ -226,7 +251,6 @@ export default class AdminDash extends Component {
 
     marketPatch = (e) => {
         e.preventDefault()
-        // console.log(e.target)
         fetch(`http://localhost:3000/api/v1/markets/${this.state.market.id}`, {
             method: "PATCH",
             mode: 'cors',
@@ -269,6 +293,31 @@ export default class AdminDash extends Component {
         e.target.reset()
     }
 
+    calculatorDelete = () => {
+        var id = this.state.calculator.id
+        let arr = this.state.calculators.filter(calculator => calculator.id != this.state.calculator.id)
+        fetch(`http://localhost:3000/api/v1/calculators/${this.state.calculator.id}`, {
+            method: "DELETE",
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${localStorage.token}` 
+            }
+        })
+        this.setState({
+            calculators: arr,
+            calculator: {
+                address: "",
+                city: "",
+                state: "",
+                zip: "",
+                arv: "",
+                rehab: "",
+                purchase_price: ""
+            }
+        })
+    }
+
     render() {
         return(
             <div className="dashboard" style={{ 'marginLeft': '15px', 'marginRight': '15px'}}>
@@ -299,6 +348,44 @@ export default class AdminDash extends Component {
                                                     <div className="col" style={{position: "absolute", bottom: "10px"}}>
                                                         <button className="btn btn-success" onClick={this.contactPatch}>Contacted</button>
                                                         <button className="btn btn-success" onClick={this.resolvePatch}>Resolved</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col" style={{ 'marginTop': '15px', 'marginBottom': '15px'}}>
+                        <div className="card bg-secondary mb-3" style={{"width": "100%", height: "100%"}}>
+                            <div className="card-header"><h3>Calculator MGMT</h3></div>
+                            <div className="card-body">
+                                <div className="row">
+                                    <div className="col-4" style={{height:"300px",overflow: "auto"}}>
+                                        {this.state.calculators.map(calculator => <Calculatormap calculator={calculator} displayCalculator={this.displayCalculator}/>)}
+                                    </div>
+                                    <div className="col-8">
+                                        <div className="card bg-secondary mb-3" style={{"width": "100%", height: "100%"}}>
+                                            <div className="card-body">
+                                                <div className="row" style={{fontWeight: "500", textAlign: "left", paddingLeft: "20px", height:"35px"}}>
+                                                    <div className="col">Address: {this.state.calculator.address}</div>
+                                                </div>
+                                                <div className="row" style={{fontWeight: "500", textAlign: "left", paddingLeft: "20px", height:"35px"}}>
+                                                    <div className="col">City:<br/> {this.state.calculator.city}</div>
+                                                    <div className="col">State:<br/> {this.state.calculator.state}</div>
+                                                    <div className="col">Zip:<br/> {this.state.calculator.zip}</div>
+                                                </div><br/>
+                                                <div className="row" style={{fontWeight: "500", textAlign: "left", paddingLeft: "20px", height:"35px"}}>
+                                                    <div className="col">ARV:<br/> ${this.state.calculator.arv}</div>
+                                                    <div className="col">Purchase Price:<br/> ${this.state.calculator.purchase_price}</div>
+                                                    <div className="col">Rehab:<br/> ${this.state.calculator.rehab}</div>
+                                                </div>
+                                                <div className="row">
+                                                    <div className="col" style={{position: "absolute", bottom: "10px"}}>
+                                                        <button className="btn btn-success" onClick={this.calculatorDelete}>Delete</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -382,16 +469,6 @@ export default class AdminDash extends Component {
                                         </div>
                                     </div> 
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col" style={{ 'marginTop': '15px', 'marginBottom': '15px'}}>
-                        <div className="card bg-secondary mb-3" style={{"width": "100%", height: "100%"}}>
-                            <div className="card-header"><h3>Calculator MGMT</h3></div>
-                            <div className="card-body">
-
                             </div>
                         </div>
                     </div>

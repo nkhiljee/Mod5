@@ -6,7 +6,7 @@ export default class Usermap extends Component {
         // console.log(this.props.inquiry)
         return(
             <div className="inquirymap" onClick={() => this.props.displayUser(this.props.user)}>
-                <div className="card bg-secondary mb-3">
+                <div className="card bg-sec mb-3">
                     <div className="row">
                         <div className="col-6" style={{textAlign: "left"}}>
                             <div style={{padding: "0.50rem", paddingLeft: "1.50rem", fontWeight: "500"}}>{this.props.user.name}</div>

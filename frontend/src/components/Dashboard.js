@@ -404,6 +404,7 @@ export default class Dashboard extends Component {
     render() {
         this.thismonthlyDOM()
         // console.log(this.actualMonths())
+        console.log(this.state)
         return(
             <div>
             {localStorage.account != "null" || localStorage.admin == "true" ?
@@ -448,8 +449,8 @@ export default class Dashboard extends Component {
                                             <div className="col">
                                                 <p style={{"textAlign": "left"}}>{this.salesVolume()[this.salesVolume().length - 2]}</p>
                                                 <p style={{"textAlign": "left"}}>${this.thismonthlydollarvolume().reduce((accumulator, currentValue) => accumulator + currentValue)}</p>
-                                                <p style={{"textAlign": "left"}}>{this.thismonthlyDOM().reduce((accumulator, currentValue) => accumulator + currentValue) / this.thismonthlyDOM().filter(month => month != 0).length}</p>
-                                                <p style={{"textAlign": "left"}}>{this.thismonthlyCDOM().reduce((accumulator, currentValue) => accumulator + currentValue) / this.thismonthlyCDOM().filter(month => month != 0).length}</p>
+                                                <p style={{"textAlign": "left"}}>{(this.thismonthlyDOM().reduce((accumulator, currentValue) => accumulator + currentValue) / this.thismonthlyDOM().filter(month => month != 0).length).toString()}</p>
+                                                <p style={{"textAlign": "left"}}>{(this.thismonthlyCDOM().reduce((accumulator, currentValue) => accumulator + currentValue) / this.thismonthlyCDOM().filter(month => month != 0).length).toString()}</p>
                                             </div>
                                         </div>
                                     </div>

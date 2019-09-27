@@ -15,6 +15,12 @@ class Api::V1::CalculatorsController < ApplicationController
         @calculator = Calculator.create(calculator_params)
         render json: @calculator, status: 201
     end
+
+    def destroy
+        @calculator = Calculator.find(params[:id])
+        @calculator.destroy
+    end
+
     private
     def calculator_params
         params.require(:calculator).permit(:address, :city, :state, :zip, :arv, :rehab, :purchase_price)

@@ -58,9 +58,9 @@ export default class Navbar extends Component {
                                         <li className="nav-item dropdown">
                                             <a className="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" onClick={this.toggle}>Time Maps</a>
                                             <div className="dropdown-menu" x-placement="bottom-start" style={{position: "absolute", transform: "translate3d(0px, 39px, 0px)", top: "0px", left: "0px", "willChange": "transform"}}>
-                                                <a className="dropdown-item" href="#">Action</a>
-                                                <a className="dropdown-item" href="#">Another action</a>
-                                                <a className="dropdown-item" href="#">Something else here</a>
+                                                <a className="dropdown-item" href="#">Price / SQFT</a>
+                                                <a className="dropdown-item" href="#">Price</a>
+                                                <a className="dropdown-item" href="#">CDOM</a>
                                             </div>
                                         </li>
                                     }
@@ -86,18 +86,18 @@ export default class Navbar extends Component {
                                         <li className="nav-item dropdown">
                                             <a className="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" onClick={this.toggle}>Time Maps</a>
                                             <div className="dropdown-menu" x-placement="bottom-start" style={{display: "inline-block", position: "absolute", transform: "translate3d(0px, 30px, 0px)", top: "0px", left: "0px", "willChange": "transform"}}>
-                                                <a className="dropdown-item" href="#">Action</a>
-                                                <a className="dropdown-item" href="#">Another action</a>
-                                                <a className="dropdown-item" href="#">Something else here</a>
+                                                <a className="dropdown-item" href="#">Price / SQFT</a>
+                                                <a className="dropdown-item" href="#">Price</a>
+                                                <a className="dropdown-item" href="#">CDOM</a>
                                             </div>
                                         </li>
                                     :
                                         <li className="nav-item dropdown">
                                             <a className="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" onClick={this.toggle}>Time Maps</a>
                                             <div className="dropdown-menu" x-placement="bottom-start" style={{position: "absolute", transform: "translate3d(0px, 39px, 0px)", top: "0px", left: "0px", "willChange": "transform"}}>
-                                                <a className="dropdown-item" href="#">Action</a>
-                                                <a className="dropdown-item" href="#">Another action</a>
-                                                <a className="dropdown-item" href="#">Something else here</a>
+                                                <a className="dropdown-item" href="#">Price / SQFT</a>
+                                                <a className="dropdown-item" href="#">Price</a>
+                                                <a className="dropdown-item" href="#">CDOM</a>
                                             </div>
                                         </li>
                                     }

@@ -296,3 +296,12 @@ a:hover
   justify-content: center;
 
 }
+
+.bg-sec:hover,.bg-sec:focus
+{
+  background: #F9F9F9 !important;
+}
+.bg-sec:active
+{
+  border-color: #11a9a5; 
+} 
