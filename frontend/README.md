@@ -1,68 +1,32 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### SUMMARY
+    RE Analyzer is a Real Estate Analysis tool designed to aid Realtors, Brokerages, Investors, and Investment Firms.  The tool allows the customer to derisk their investments through data driven trend base analysis for a given geographic area. The tool comprises of geographic, time based, and financial information. The information is represented through the use of data tables, charting, and animated time series maps. 
 
-In the project directory, you can run:
+    RE Analyzer provides value to its customers by enabling them to save time analyzing their data, save resources by making informed decisions that will derisk their investments, and the ability to streamline efforts therefor focusing more on growing their business.
 
-### `npm start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### HOW TO SETUP
+ -- set up backend:
+    1. Navigate to Mod5/backend
+    2. Run command "bundle install" (this will install gems)
+    3. Run command "rails db:migrate" (this will migrate data)
+    4. Run command "rails db:seed" (this will seed data from seed file and CSV)
+    3. Run command "rails s" (this will setup server on port: 3000)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+ -- set up frontend:
+    1. Navigate to Mod5/frontend
+    2. Run command "npm install" (this will install node packages and libraries)
+    3. Run command "npm audit fix" (this will fix any vulnerabilities presented during installation)
+    4. Run command "npm start" (this will start the frontend server)
+    5. Type in "y" to select another server since port: 3000 is already in use from teh abckend
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### HOW TO USE
+ -- before purchase
+    User can view the sales funnel on the home page and interact with different pricing options.  In order to purchase a plan a user must signup and login.  Once a user is logged in they are allowed property calculator functionality. Property calculator allows the user to enter property locational information, rehab estimate, and after repair value. The calculator will then calculate the estimated purchase price for the property the user is inquiring about and will print out a PDF of the property report. The user once logged in can also purchase a pricing plan to enable further functionality. Pricing is offered in monthly and yearly subscription rates. Once the user selected an option they are presented with shopping cart functionality and prompted to input billing and credit card info.  After that process is finished the user is allowed dashboard and time maps capabilities.
 
-### `npm run build`
+ -- after purchase
+    Paying customers are enabled to view user dashboard and time maps. User dashboard contains statistical information derived from property data. Data is represented in tables and charts.  Inforamtion displayed represents sales volume, price/sqft, price, DOM, and CDOM.  Time maps present a new instantaneous display of information representing price/sqft, price, and CDOM. Future functionality will include Price and DOM predictions using a ML approach. 
+    
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### LINK TO DEMO

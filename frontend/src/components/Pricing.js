@@ -23,7 +23,7 @@ export default class Pricing extends Component {
                         <img src={require('../images/home3.png')} className="works-img" />
                             <div className="card-body">
                                 <h5 className="card-title"><strong>Monthly Subscription</strong></h5>
-                                <p className="card-text" id="pricing-price">$49</p>
+                                <p className="card-text" id="pricing-price">$149</p>
                                 <Link to="/cart" ><button type="button" value= "monthly" className="btn btn-success" onClick={(e) => this.props.addToCart(e)}>Add to Cart</button></Link>
                             </div>
                         </div>
@@ -33,7 +33,7 @@ export default class Pricing extends Component {
                         <img src={require('../images/home3.png')} className="works-img" />
                             <div className="card-body">
                                 <h5 className="card-title"><strong>Yearly Subscription</strong></h5>
-                                <p className="card-text" id="pricing-price">$499</p>
+                                <p className="card-text" id="pricing-price">$1499</p>
                                 <Link to="/cart" ><button type="button" value="yearly" className="btn btn-success" onClick={(e) => this.props.addToCart(e)}>Add to Cart</button></Link>
                             </div>
                         </div>

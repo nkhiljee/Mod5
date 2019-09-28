@@ -11,6 +11,10 @@ import Dashboard from './components/Dashboard'
 import Cartinfo from './components/Cartinfo'
 import Admindash from './components/Admindashboard'
 import Calculator from './components/Calculator'
+import Pricesqft from './components/maps/pricesqft'
+import Price from './components/maps/price'
+import CDOM from './components/maps/cdom'
+
 import {Redirect, BrowserRouter, Route, Switch} from 'react-router-dom'
 
 export default class App extends React.Component {
@@ -119,6 +123,10 @@ export default class App extends React.Component {
             <Navbar/>
             
             <Switch>
+              <Route path="/pricesqft" render = {() => <Pricesqft/> }/>
+              <Route path="/price" render = {() => <Price/> }/>              
+              <Route path="/cdom" render = {() => <CDOM/> }/>              
+
               <Route path="/admin_dashboard" render = {(routerProps) => <Admindash {...routerProps} propertyCount={this.state.propertyCount}/> }/>
               <Route path="/calculator" render = {(routerProps) => <Calculator {...routerProps} /> }/>
               <Route path="/cartinfo" render = {(routerProps) => <Cartinfo {...routerProps} updateAccount={this.updateAccount}/> }/>
