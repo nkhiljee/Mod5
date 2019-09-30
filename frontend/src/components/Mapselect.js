@@ -3,32 +3,7 @@ import Map from "./Map"
 
 export default class Mapselect extends Component{
 
-    constructor(){
-        super()
-        this.state={
-            north: 29.77,
-            south: 29.765,
-            east: -95.41,
-            west: -95.42
-        }
-    }
-
-    getCoords = (rectangle) => {
-        var north = rectangle.getBounds().getNorthEast().lat()
-        var east = rectangle.getBounds().getNorthEast().lng()
-        var south = rectangle.getBounds().getSouthWest().lat()
-        var west = rectangle.getBounds().getSouthWest().lng()
-
-        this.setState({
-            north: north,
-            south: east,
-            east: south,
-            west: west
-        })
-    }
-
     render(){        
-        console.log(this.state)
         return(
             <div className="signin">
                 <div className="row">
@@ -59,13 +34,13 @@ export default class Mapselect extends Component{
                                 map: map
                             })
                             rectangle.setMap(map)
-                            rectangle.addListener('bounds_changed', () => {this.getCoords(rectangle)})
+                            rectangle.addListener('bounds_changed', () => {this.props.getCoords(rectangle)})
                             }}
                             />
                             
                         </div><br/>
-                        <button className="btn btn-success">Select Range</button>
-                        <button className="btn btn-success">Select All</button>
+                        <button className="btn btn-success" onClick={() => {this.props.propertyLimit(true)}}>Select Range</button>
+                        <button className="btn btn-success" onClick={() => {this.props.propertyLimit(false)}}>Select All</button>
 
                     </div>
                     <div className="col"></div>

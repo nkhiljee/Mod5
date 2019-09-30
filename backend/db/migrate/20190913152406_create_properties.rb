@@ -8,8 +8,8 @@ class CreateProperties < ActiveRecord::Migration[5.2]
       # t.string :StreetName
       # t.string :City
       # t.integer :PostalCode
-      t.string :Lat
-      t.string :Long
+      t.float :Lat
+      t.float :Long
       # t.integer :ListPrice
       t.integer :ClosePrice
       # t.string :ListDate

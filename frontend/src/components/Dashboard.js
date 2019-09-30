@@ -14,6 +14,7 @@ export default class Dashboard extends Component {
     constructor(){
         super()
         this.state={
+            propertiesMaster:[],
             properties: [],
             market: ""
         }
@@ -30,9 +31,28 @@ export default class Dashboard extends Component {
         })
         .then(res=>res.json())
         .then(properties => {
-            this.setState({
-                properties: properties
-            })
+
+            if (this.props.propertyLimit == true) {
+                console.log(this.props.coords.south)
+                let arr = properties.filter(property => property.Lat >= this.props.coords.south && property.Lat <= this.props.coords.north && property.Long >= this.props.coords.west && property.Long <= this.props.coords.east)
+                console.log(arr)
+                this.setState({
+                    properties: arr
+                })
+                console.log("true")
+
+            } else {
+                this.setState({
+                    properties: properties,
+                    propertiesMaster: properties
+                })
+            }
+
+
+            // this.setState({
+            //     properties: properties,
+            //     propertiesMaster: properties
+            // })
             this.props.propertyCount(this.state.properties.length)
         })
 
@@ -405,7 +425,8 @@ export default class Dashboard extends Component {
     render() {
         this.thismonthlyDOM()
         // console.log(this.actualMonths())
-        console.log(this.state)
+        console.log(this.props.propertyLimit)
+
         return(
             <div>
             {localStorage.account != "null" || localStorage.admin == "true" ?

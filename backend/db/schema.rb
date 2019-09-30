@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 2019_09_13_160115) do
   end
 
   create_table "properties", force: :cascade do |t|
-    t.string "Lat"
-    t.string "Long"
+    t.float "Lat"
+    t.float "Long"
     t.integer "ClosePrice"
     t.string "CloseDate"
     t.string "PriceSqFtSold"
@@ -59,8 +59,6 @@ ActiveRecord::Schema.define(version: 2019_09_13_160115) do
     t.integer "CDOM"
     t.string "SoldTerms"
     t.integer "market_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "user_markets", force: :cascade do |t|

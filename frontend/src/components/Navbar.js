@@ -41,8 +41,13 @@ export default class Navbar extends Component {
                                         <Link className="nav-link" to="/admin_dashboard">Admin Dashboard</Link>
 
                                     </li>
+
                                     <li className="nav-item">
                                         <Link className="nav-link" to="/dashboard">Dashboard</Link>
+
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/map">Select Data</Link>
 
                                     </li>
                                     {this.state.toggle == true ?
@@ -78,8 +83,13 @@ export default class Navbar extends Component {
                                         <Link className="nav-link" to="/">Home</Link>
 
                                     </li>
+
                                     <li className="nav-item">
                                         <Link className="nav-link" to="/dashboard">Dashboard</Link>
+
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/map">Select Data</Link>
 
                                     </li>
                                     {this.state.toggle == true ?

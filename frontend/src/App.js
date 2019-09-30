@@ -27,8 +27,52 @@ export default class App extends React.Component {
       cart: "empty",
       loggedIn: false,
       toDashboard: false,
-      propertyCount: 0
+      propertyCount: 0,
+      propertyLimit: false,
+      coords: {
+        north: 29.77,
+        south: 29.765,
+        east: -95.41,
+        west: -95.42
+      }
+
     }
+  }
+
+  propertyLimit = (limit) => {
+    this.setState({
+      propertyLimit: false,
+      toDashboard: false
+    },()=>{    
+      if (limit === true) {
+      this.setState({
+        propertyLimit: true,
+        toDashboard: true
+      })
+    
+    } else {
+      this.setState({
+        propertyLimit: false,
+        toDashboard: true
+      })
+    }})
+
+  }
+
+  getCoords = (rectangle) => {
+    var north = rectangle.getBounds().getNorthEast().lat()
+    var east = rectangle.getBounds().getNorthEast().lng()
+    var south = rectangle.getBounds().getSouthWest().lat()
+    var west = rectangle.getBounds().getSouthWest().lng()
+
+    this.setState({
+      coords: {        
+        north: north,
+        south: south,
+        east: east,
+        west: west
+      }
+    })
   }
 
   propertyCount = (count) => {
@@ -53,7 +97,6 @@ export default class App extends React.Component {
 
   updateAccount = (e) => {
     e.preventDefault()
-    console.log(this.state.cart)
     fetch(`http://localhost:3000/api/v1/users/${this.state.user_id}`, {
       method: "PATCH",
       headers: {
@@ -127,12 +170,11 @@ export default class App extends React.Component {
               <Route path="/pricesqft" render = {() => <Pricesqft/> }/>
               <Route path="/price" render = {() => <Price/> }/>              
               <Route path="/cdom" render = {() => <CDOM/> }/>              
-              <Route path="/map" render = {() => <Mapselect/> }/>              
-
+              <Route path="/map" render = {(routerProps) => <Mapselect {...routerProps} getCoords={(rectangle) => this.getCoords(rectangle)} propertyLimit={(limit) => this.propertyLimit(limit)}/> }/>              
               <Route path="/admin_dashboard" render = {(routerProps) => <Admindash {...routerProps} propertyCount={this.state.propertyCount}/> }/>
               <Route path="/calculator" render = {(routerProps) => <Calculator {...routerProps} /> }/>
               <Route path="/cartinfo" render = {(routerProps) => <Cartinfo {...routerProps} updateAccount={this.updateAccount}/> }/>
-              <Route path="/dashboard" render = {(routerProps) => <Dashboard {...routerProps} propertyCount={(count) => this.propertyCount(count)} /> } />
+              <Route path="/dashboard" render = {(routerProps) => <Dashboard {...routerProps} propertyCount={(count) => this.propertyCount(count)} coords={this.state.coords} propertyLimit={this.state.propertyLimit}/> } />
               <Route path="/cart" render = {(routerProps) => <Cart cart={this.state.cart} {...routerProps} /> } />
               <Route path="/pricing" render = {(routerProps) => <Pricing addToCart={this.addToCart} {...routerProps} /> } />
               <Route path="/signup" render = {(routerProps) => <Signup {...routerProps} /> } />
