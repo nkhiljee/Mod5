@@ -14,6 +14,7 @@ import Calculator from './components/Calculator'
 import Pricesqft from './components/maps/pricesqft'
 import Price from './components/maps/price'
 import CDOM from './components/maps/cdom'
+import Mapselect from './components/Mapselect'
 
 import {Redirect, BrowserRouter, Route, Switch} from 'react-router-dom'
 
@@ -126,6 +127,7 @@ export default class App extends React.Component {
               <Route path="/pricesqft" render = {() => <Pricesqft/> }/>
               <Route path="/price" render = {() => <Price/> }/>              
               <Route path="/cdom" render = {() => <CDOM/> }/>              
+              <Route path="/map" render = {() => <Mapselect/> }/>              
 
               <Route path="/admin_dashboard" render = {(routerProps) => <Admindash {...routerProps} propertyCount={this.state.propertyCount}/> }/>
               <Route path="/calculator" render = {(routerProps) => <Calculator {...routerProps} /> }/>

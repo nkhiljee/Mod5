@@ -6,6 +6,7 @@ import Priceline from './charts/Priceline'
 import Dom from './charts/Dom'
 import Cdom from './charts/Cdom'
 import { Link } from 'react-router-dom'
+import Map from './Map'
 
 
 export default class Dashboard extends Component {

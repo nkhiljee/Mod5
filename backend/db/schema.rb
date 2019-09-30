@@ -50,33 +50,14 @@ ActiveRecord::Schema.define(version: 2019_09_13_160115) do
   end
 
   create_table "properties", force: :cascade do |t|
-    t.string "Status"
-    t.string "Address"
-    t.string "StreetNumber"
-    t.string "StreetName"
-    t.string "City"
-    t.integer "PostalCode"
     t.string "Lat"
     t.string "Long"
-    t.integer "ListPrice"
     t.integer "ClosePrice"
-    t.string "ListDate"
     t.string "CloseDate"
-    t.integer "SqFtTotal"
-    t.string "PriceSqFtList"
     t.string "PriceSqFtSold"
-    t.integer "LotSize"
-    t.integer "YearBuilt"
-    t.integer "BedsTotal"
-    t.string "BathsTotal"
-    t.string "Stories"
-    t.string "NewConstruction"
-    t.string "Style"
     t.integer "DOM"
     t.integer "CDOM"
     t.string "SoldTerms"
-    t.string "HOAMandatory"
-    t.integer "TaxAmount"
     t.integer "market_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
