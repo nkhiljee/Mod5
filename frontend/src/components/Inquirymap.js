@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 export default class Inquirymap extends Component {
     
     render(){
-        // console.log(this.props.inquiry)
         return(
             <div className="inquirymap" onClick={() => this.props.displayInquiry(this.props.inquiry)}>
                 <div className="card bg-sec mb-3">

@@ -53,11 +53,11 @@ ActiveRecord::Schema.define(version: 2019_09_13_160115) do
     t.float "Lat"
     t.float "Long"
     t.integer "ClosePrice"
-    t.string "CloseDate"
+    t.string "CloseDateYear"
+    t.string "CloseDateMonth"
     t.string "PriceSqFtSold"
     t.integer "DOM"
     t.integer "CDOM"
-    t.string "SoldTerms"
     t.integer "market_id"
   end
 

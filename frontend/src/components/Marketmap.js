@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 
 export default class Marketmap extends Component {
 
-
-    
     render(){
         return(
             <div className="inquirymap" onClick={() => this.props.displayMarket(this.props.market)}>

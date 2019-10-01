@@ -5,7 +5,6 @@ import * as jsPDF from 'jspdf'
 export default class Calculator extends Component {
 
     printPDF = (data) => {
-        console.log(data)
         var doc = new jsPDF()
 
         doc.setFont('helvetica')

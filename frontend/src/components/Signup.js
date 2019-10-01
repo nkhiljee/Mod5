@@ -1,18 +1,10 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom'
 
-
 export default class Signup extends Component {
 
     signup = (e) => {
         e.preventDefault()
-        console.log(e.target[0].value)
-        console.log(e.target[1].value)
-        console.log(e.target[2].value)
-        console.log(e.target[3].value)
-        console.log(e.target[4].value)
-        console.log(e.target[5].value)
-        console.log(e.target[6].value)
         fetch("http://localhost:3000/api/v1/users", {
             method: "POST",
             headers: {

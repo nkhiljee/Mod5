@@ -13,7 +13,10 @@ class CreateProperties < ActiveRecord::Migration[5.2]
       # t.integer :ListPrice
       t.integer :ClosePrice
       # t.string :ListDate
-      t.string :CloseDate
+      # t.string :CloseDate
+      t.string :CloseDateYear
+      t.string :CloseDateMonth
+      # t.string :CloseDateDay
       # t.integer :SqFtTotal
       # t.string :PriceSqFtList
       t.string :PriceSqFtSold
@@ -26,7 +29,7 @@ class CreateProperties < ActiveRecord::Migration[5.2]
       # t.string :Style
       t.integer :DOM
       t.integer :CDOM
-      t.string :SoldTerms
+      # t.string :SoldTerms
       # t.string :HOAMandatory
       # t.integer :TaxAmount
       t.integer :market_id

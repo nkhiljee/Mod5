@@ -3,7 +3,7 @@ import Map from "./Map"
 
 export default class Mapselect extends Component{
 
-    render(){        
+    render(){
         return(
             <div className="signin">
                 <div className="row">
@@ -18,12 +18,12 @@ export default class Mapselect extends Component{
                             <Map
                             id="myMap"
                             options={{
-                            center: { lat: 29.770336, lng: -95.410610 },
-                            zoom: 14
+                            center: { lat: 29.779625, lng: -95.395898 },
+                            zoom: 13
                             }}
                             onMapLoad={map => {
                             var rectangle = new window.google.maps.Rectangle({
-                                bounds: {north: 29.77, south: 29.765, east: -95.41, west: -95.42},
+                                bounds: {north: this.props.coords.north, south: this.props.coords.south, east: this.props.coords.east, west: this.props.coords.west},
                                 strokeColor: "#12626c",
                                 strokeOpacity: 0.8,
                                 strokeWeight: 3,

@@ -47,12 +47,6 @@ export default class Dashboard extends Component {
                     propertiesMaster: properties
                 })
             }
-
-
-            // this.setState({
-            //     properties: properties,
-            //     propertiesMaster: properties
-            // })
             this.props.propertyCount(this.state.properties.length)
         })
 
@@ -106,7 +100,7 @@ export default class Dashboard extends Component {
         let thismontharr
 
         monthrange.forEach(month => {
-            thismontharr = this.state.properties.filter(property => property.CloseDate.split("-")[0] == thisyear && property.CloseDate.split("-")[1] == month)
+            thismontharr = this.state.properties.filter(property => property.CloseDateYear == thisyear && property.CloseDateMonth == month)
             return thismonthlyvol.push(thismontharr.length)
         })
 
@@ -120,7 +114,7 @@ export default class Dashboard extends Component {
         let lastmontharr
 
         monthrange.forEach(month => {
-            lastmontharr = this.state.properties.filter(property => property.CloseDate.split("-")[0] == lastyear && property.CloseDate.split("-")[1] == month)
+            lastmontharr = this.state.properties.filter(property => property.CloseDateYear == lastyear && property.CloseDateMonth == month)
             return lastmonthlyvol.push(lastmontharr.length)
         })
 
@@ -134,7 +128,7 @@ export default class Dashboard extends Component {
         let secondlastmontharr
 
         monthrange.forEach(month => {
-            secondlastmontharr = this.state.properties.filter(property => property.CloseDate.split("-")[0] == secondlastyear && property.CloseDate.split("-")[1] == month)
+            secondlastmontharr = this.state.properties.filter(property => property.CloseDateYear == secondlastyear && property.CloseDateMonth == month)
             return secondlastmonthlyvol.push(secondlastmontharr.length)
         })
         return secondlastmonthlyvol
@@ -152,7 +146,7 @@ export default class Dashboard extends Component {
             sum = 0
             avg = 0
             // debugger
-            thismontharr = this.state.properties.filter(property => property.CloseDate.split("-")[0] == thisyear && property.CloseDate.split("-")[1] == month)
+            thismontharr = this.state.properties.filter(property => property.CloseDateYear == thisyear && property.CloseDateMonth == month)
             arr = thismontharr.map(property => {
                 return property.ClosePrice
             })
@@ -181,7 +175,7 @@ export default class Dashboard extends Component {
             sum = 0
             avg = 0
             // debugger
-            thismontharr = this.state.properties.filter(property => property.CloseDate.split("-")[0] == thisyear && property.CloseDate.split("-")[1] == month)
+            thismontharr = this.state.properties.filter(property => property.CloseDateYear == thisyear && property.CloseDateMonth == month)
             arr = thismontharr.map(property => {
                 return property.DOM
             })
@@ -207,7 +201,7 @@ export default class Dashboard extends Component {
         let arr = []
 
         monthrange.forEach(month => {
-            lastmontharr = this.state.properties.filter(property => property.CloseDate.split("-")[0] == lastyear && property.CloseDate.split("-")[1] == month)
+            lastmontharr = this.state.properties.filter(property => property.CloseDateYear == lastyear && property.CloseDateMonth == month)
             arr = lastmontharr.map(property => {
                 return property.DOM
             })
@@ -233,7 +227,7 @@ export default class Dashboard extends Component {
         let arr = []
 
         monthrange.forEach(month => {
-            secondlastmontharr = this.state.properties.filter(property => property.CloseDate.split("-")[0] == secondlastyear && property.CloseDate.split("-")[1] == month)
+            secondlastmontharr = this.state.properties.filter(property => property.CloseDateYear == secondlastyear && property.CloseDateMonth == month)
             arr = secondlastmontharr.map(property => {
                 return property.DOM
             })
@@ -261,7 +255,7 @@ export default class Dashboard extends Component {
         monthrange.forEach(month => {
             sum = 0
             avg = 0
-            thismontharr = this.state.properties.filter(property => property.CloseDate.split("-")[0] == thisyear && property.CloseDate.split("-")[1] == month)
+            thismontharr = this.state.properties.filter(property => property.CloseDateYear == thisyear && property.CloseDateMonth == month)
             arr = thismontharr.map(property => {
                 return property.CDOM
             })
@@ -287,7 +281,7 @@ export default class Dashboard extends Component {
         let arr = []
 
         monthrange.forEach(month => {
-            lastmontharr = this.state.properties.filter(property => property.CloseDate.split("-")[0] == lastyear && property.CloseDate.split("-")[1] == month)
+            lastmontharr = this.state.properties.filter(property => property.CloseDateYear == lastyear && property.CloseDateMonth == month)
             arr = lastmontharr.map(property => {
                 return property.CDOM
             })
@@ -313,7 +307,7 @@ export default class Dashboard extends Component {
         let arr = []
 
         monthrange.forEach(month => {
-            secondlastmontharr = this.state.properties.filter(property => property.CloseDate.split("-")[0] == secondlastyear && property.CloseDate.split("-")[1] == month)
+            secondlastmontharr = this.state.properties.filter(property => property.CloseDateYear == secondlastyear && property.CloseDateMonth == month)
             arr = secondlastmontharr.map(property => {
                 return property.CDOM
             })
@@ -335,7 +329,7 @@ export default class Dashboard extends Component {
         let arr
 
         range.forEach(year => {
-            arr = this.state.properties.filter(property => property.CloseDate.split("-")[0] == year)
+            arr = this.state.properties.filter(property => property.CloseDateYear == year)
             vol.push(arr.length)
         })
 
@@ -363,19 +357,19 @@ export default class Dashboard extends Component {
             }
 
         range.forEach(year => {
-            newarr50 = this.state.properties.filter(property => property.CloseDate.split("-")[0] == year && property.PriceSqFtSold <= 50)
+            newarr50 = this.state.properties.filter(property => property.CloseDateYear == year && property.PriceSqFtSold <= 50)
             volsqft.v50.push(newarr50.length)
-            newarr100 = this.state.properties.filter(property => property.CloseDate.split("-")[0] == year && property.PriceSqFtSold <= 100 && property.PriceSqFtSold > 50)
+            newarr100 = this.state.properties.filter(property => property.CloseDateYear == year && property.PriceSqFtSold <= 100 && property.PriceSqFtSold > 50)
             volsqft.v100.push(newarr100.length)
-            newarr150 = this.state.properties.filter(property => property.CloseDate.split("-")[0] == year && property.PriceSqFtSold <= 150 && property.PriceSqFtSold > 100)
+            newarr150 = this.state.properties.filter(property => property.CloseDateYear == year && property.PriceSqFtSold <= 150 && property.PriceSqFtSold > 100)
             volsqft.v150.push(newarr150.length)
-            newarr200 = this.state.properties.filter(property => property.CloseDate.split("-")[0] == year && property.PriceSqFtSold <= 200 && property.PriceSqFtSold > 150)
+            newarr200 = this.state.properties.filter(property => property.CloseDateYear == year && property.PriceSqFtSold <= 200 && property.PriceSqFtSold > 150)
             volsqft.v200.push(newarr200.length)
-            newarr250 = this.state.properties.filter(property => property.CloseDate.split("-")[0] == year && property.PriceSqFtSold <= 250 && property.PriceSqFtSold > 200)
+            newarr250 = this.state.properties.filter(property => property.CloseDateYear == year && property.PriceSqFtSold <= 250 && property.PriceSqFtSold > 200)
             volsqft.v250.push(newarr250.length)
-            newarr300 = this.state.properties.filter(property => property.CloseDate.split("-")[0] == year && property.PriceSqFtSold <= 300 && property.PriceSqFtSold > 250)
+            newarr300 = this.state.properties.filter(property => property.CloseDateYear == year && property.PriceSqFtSold <= 300 && property.PriceSqFtSold > 250)
             volsqft.v300.push(newarr300.length)
-            newarr400 = this.state.properties.filter(property => property.CloseDate.split("-")[0] == year && property.PriceSqFtSold > 300)
+            newarr400 = this.state.properties.filter(property => property.CloseDateYear == year && property.PriceSqFtSold > 300)
             volsqft.v400.push(newarr400.length)
         })
         return volsqft
@@ -402,31 +396,26 @@ export default class Dashboard extends Component {
             }
 
         range.forEach(year => {
-            newarr100 = this.state.properties.filter(property => property.CloseDate.split("-")[0] == year && property.ClosePrice <= 150000)
+            newarr100 = this.state.properties.filter(property => property.CloseDateYear == year && property.ClosePrice <= 150000)
             volprice.v100.push(newarr100.length)
-            newarr200 = this.state.properties.filter(property => property.CloseDate.split("-")[0] == year && property.ClosePrice <= 250000 && property.ClosePrice > 150000)
+            newarr200 = this.state.properties.filter(property => property.CloseDateYear == year && property.ClosePrice <= 250000 && property.ClosePrice > 150000)
             volprice.v200.push(newarr200.length)
-            newarr300 = this.state.properties.filter(property => property.CloseDate.split("-")[0] == year && property.ClosePrice <= 350000 && property.ClosePrice > 250000)
+            newarr300 = this.state.properties.filter(property => property.CloseDateYear == year && property.ClosePrice <= 350000 && property.ClosePrice > 250000)
             volprice.v300.push(newarr300.length)
-            newarr400 = this.state.properties.filter(property => property.CloseDate.split("-")[0] == year && property.ClosePrice <= 450000 && property.ClosePrice > 350000)
+            newarr400 = this.state.properties.filter(property => property.CloseDateYear == year && property.ClosePrice <= 450000 && property.ClosePrice > 350000)
             volprice.v400.push(newarr400.length)
-            newarr500 = this.state.properties.filter(property => property.CloseDate.split("-")[0] == year && property.ClosePrice <= 550000 && property.ClosePrice > 450000)
+            newarr500 = this.state.properties.filter(property => property.CloseDateYear == year && property.ClosePrice <= 550000 && property.ClosePrice > 450000)
             volprice.v500.push(newarr500.length)
-            newarr600 = this.state.properties.filter(property => property.CloseDate.split("-")[0] == year && property.ClosePrice <= 650000 && property.ClosePrice > 550000)
+            newarr600 = this.state.properties.filter(property => property.CloseDateYear == year && property.ClosePrice <= 650000 && property.ClosePrice > 550000)
             volprice.v600.push(newarr600.length)
-            newarr700 = this.state.properties.filter(property => property.CloseDate.split("-")[0] == year && property.ClosePrice > 650000)
+            newarr700 = this.state.properties.filter(property => property.CloseDateYear == year && property.ClosePrice > 650000)
             volprice.v700.push(newarr700.length)
         })
         return volprice
     }
 
-
-
     render() {
         this.thismonthlyDOM()
-        // console.log(this.actualMonths())
-        console.log(this.props.propertyLimit)
-
         return(
             <div>
             {localStorage.account != "null" || localStorage.admin == "true" ?
@@ -471,8 +460,8 @@ export default class Dashboard extends Component {
                                             <div className="col">
                                                 <p style={{"textAlign": "left"}}>{this.salesVolume()[this.salesVolume().length - 2]}</p>
                                                 <p style={{"textAlign": "left"}}>${this.thismonthlydollarvolume().reduce((accumulator, currentValue) => accumulator + currentValue)}</p>
-                                                <p style={{"textAlign": "left"}}>{(this.thismonthlyDOM().reduce((accumulator, currentValue) => accumulator + currentValue) / this.thismonthlyDOM().filter(month => month != 0).length).toString()}</p>
-                                                <p style={{"textAlign": "left"}}>{(this.thismonthlyCDOM().reduce((accumulator, currentValue) => accumulator + currentValue) / this.thismonthlyCDOM().filter(month => month != 0).length).toString()}</p>
+                                                <p style={{"textAlign": "left"}}>{(this.thismonthlyDOM().reduce((accumulator, currentValue) => accumulator + currentValue) / this.thismonthlyDOM().filter(month => month != 0).length).toFixed(1).toString()}</p>
+                                                <p style={{"textAlign": "left"}}>{(this.thismonthlyCDOM().reduce((accumulator, currentValue) => accumulator + currentValue) / this.thismonthlyCDOM().filter(month => month != 0).length).toFixed(1).toString()}</p>
                                             </div>
                                         </div>
                                     </div>

@@ -170,7 +170,7 @@ export default class App extends React.Component {
               <Route path="/pricesqft" render = {() => <Pricesqft/> }/>
               <Route path="/price" render = {() => <Price/> }/>              
               <Route path="/cdom" render = {() => <CDOM/> }/>              
-              <Route path="/map" render = {(routerProps) => <Mapselect {...routerProps} getCoords={(rectangle) => this.getCoords(rectangle)} propertyLimit={(limit) => this.propertyLimit(limit)}/> }/>              
+              <Route path="/map" render = {(routerProps) => <Mapselect {...routerProps} getCoords={(rectangle) => this.getCoords(rectangle)} propertyLimit={(limit) => this.propertyLimit(limit)} coords={this.state.coords}/> }/>              
               <Route path="/admin_dashboard" render = {(routerProps) => <Admindash {...routerProps} propertyCount={this.state.propertyCount}/> }/>
               <Route path="/calculator" render = {(routerProps) => <Calculator {...routerProps} /> }/>
               <Route path="/cartinfo" render = {(routerProps) => <Cartinfo {...routerProps} updateAccount={this.updateAccount}/> }/>

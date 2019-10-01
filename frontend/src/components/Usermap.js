@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 export default class Usermap extends Component {
     
     render(){
-        // console.log(this.props.inquiry)
         return(
             <div className="inquirymap" onClick={() => this.props.displayUser(this.props.user)}>
                 <div className="card bg-sec mb-3">

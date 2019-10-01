@@ -8,9 +8,6 @@ export default class Login extends Component {
 
     login = (e) => {
         e.preventDefault()
-        // console.log(e.target[0].value)
-        // console.log(e.target[1].value)
-
         fetch("http://localhost:3000/api/v1/login", {
             method: "POST",
             headers: {
@@ -23,7 +20,6 @@ export default class Login extends Component {
         })
         .then(res => res.json())
         .then(data => {
-            // console.log(data)
             localStorage.token = data.token
             localStorage.admin = data.admin
             localStorage.account = data.account

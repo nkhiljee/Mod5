@@ -9,7 +9,6 @@ export default class Inquiry extends Component {
     }
 
     render() {
-        console.log(this.props.cart)
         return(
             <div>
             { localStorage.token ? 

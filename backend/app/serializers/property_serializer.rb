@@ -1,3 +1,3 @@
 class PropertySerializer < ActiveModel::Serializer
-    attributes :ClosePrice, :CloseDate, :PriceSqFtSold, :DOM, :CDOM, :Lat, :Long
+    attributes :Lat, :Long, :ClosePrice, :CloseDateYear,:CloseDateMonth, :PriceSqFtSold, :DOM, :CDOM
 end
