@@ -38,7 +38,7 @@ export default class Inquiry extends Component {
                                             <h5 className="card-title"><strong>Monthly Subscription</strong></h5>
                                         </div>
                                         <div className="row justify-content-md-center">
-                                            <p className="card-text" id="pricing-price">$49</p>
+                                            <p className="card-text" id="pricing-price">$149</p>
                                             <br/><br/>
                                         </div>
                                         <div className="row justify-content-md-center">
@@ -54,7 +54,7 @@ export default class Inquiry extends Component {
                                             <h5 className="card-title"><strong>Yearly Subscription</strong></h5>
                                         </div>
                                         <div className="row justify-content-md-center">
-                                            <p className="card-text" id="pricing-price">$499</p>
+                                            <p className="card-text" id="pricing-price">$1499</p>
                                             <br/><br/>
                                         </div>
                                         <div className="row justify-content-md-center">
